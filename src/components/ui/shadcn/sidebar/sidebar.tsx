@@ -1,28 +1,28 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { VariantProps, cva } from "class-variance-authority"
+import {cva, type VariantProps} from "class-variance-authority"
 import { PanelLeft } from "lucide-react"
 
-import { cn } from "@/app/_utils/cn"
-import { Button } from "@/app/_components/ui/shadcn/button"
-import { Input } from "@/app/_components/ui/shadcn/input"
-import { Separator } from "@/app/_components/ui/shadcn/separator"
+import { cn } from "@/utils/cn"
+import { Button } from "@/components/ui/shadcn/button"
+import { Input } from "@/components/ui/shadcn/input"
+import { Separator } from "@/components/ui/shadcn/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/app/_components/ui/shadcn/sheet"
-import { Skeleton } from "@/app/_components/ui/shadcn/skeleton"
+} from "@/components/ui/shadcn/sheet"
+import { Skeleton } from "@/components/ui/shadcn/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/app/_components/ui/shadcn/tooltip"
+} from "@/components/ui/shadcn/tooltip"
 import {useSidebar} from "./sidebar-provider"
 
-const SIDEBAR_WIDTH_MOBILE = "clamp(7rem, 15rem, 85vw)"
+const SIDEBAR_WIDTH_MOBILE = "clamp(12rem, 15rem, 85vw)"
 
 const Sidebar = React.forwardRef<
   HTMLDivElement,

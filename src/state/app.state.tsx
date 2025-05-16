@@ -2,8 +2,8 @@ import {createContext, type Dispatch, type ReactNode, type SetStateAction, useCo
 import {z} from "zod";
 
 export const appStateSchema = z.object({
-    appCounter: z.number(),
-    setAppCounter: z.custom<Dispatch<SetStateAction<number>>>()
+    activePage:z.string(),
+    setActivePage:z.custom<Dispatch<SetStateAction<string>>>(),
 });
 
 export type AppState = z.infer<typeof appStateSchema>;
@@ -15,11 +15,11 @@ type AppStateProps = {
 }
 
 export default function AppStateProvider({children}: AppStateProps) {
-    const [appCounter, setAppCounter] = useState(0);
+
+    const [activePage, setActivePage] = useState("home");
 
     return <AppStateContext.Provider value={{
-        appCounter,
-        setAppCounter
+        activePage,setActivePage
     }}>
         {children}
     </AppStateContext.Provider>

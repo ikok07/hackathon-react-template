@@ -7,21 +7,27 @@ import TestNestedComponent from "@/components/nested/TestNestedComponent.tsx";
 import HomePage from "@/pages/HomePage.tsx";
 import SignInPage from "@/pages/SignInPage.tsx";
 import SignUpPage from "@/pages/SignUpPage.tsx";
+import NotFoundPage from '@/pages/NotFoundPage.tsx'
+import SideBarPage from "@/pages/SideBarPage.tsx";
+
 
 export default function IndexRoutes() {
     return <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />}>
-                <Route index element={<HomePage />} />
+            <Route path="/" element={<App/>}>
+                <Route path='/' element={<SideBarPage/>}>
 
-                <Route path="/nested" element={<Navigate to="/nested/test" />} />
-                <Route path="/nested" element={<NestedExamplePage />}>
-                    <Route path="/nested/test" element={<TestNestedComponent />}/>
+                    <Route index element={<HomePage/>}/>
+
+                    <Route path="/nested" element={<Navigate to="/nested/test"/>}/>
+                    <Route path="/nested" element={<NestedExamplePage/>}>
+                        <Route path="/nested/test" element={<TestNestedComponent/>}/>
+                    </Route>
+
+                    <Route path="sign-in" element={<SignInPage/>}/>
+                    <Route path="sign-up" element={<SignUpPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
                 </Route>
-
-                <Route path="sign-in" element={<SignInPage />} />
-                <Route path="sign-up" element={<SignUpPage />} />
-
             </Route>
         </Routes>
     </BrowserRouter>

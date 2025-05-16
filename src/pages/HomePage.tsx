@@ -9,7 +9,7 @@ import DropdownMenuItemRow from "@/components/ui/dropdown/DropdownMenuItemRow.ts
 import {IoExit} from "react-icons/io5";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {useMemo} from "react";
-import {SignInButton, SignUpButton, UserButton} from "@clerk/clerk-react";
+import {SignInButton, SignUpButton, useClerk, UserButton} from "@clerk/clerk-react";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton.tsx";
 import {useAppUser} from "@/hooks/auth/useAppUser.ts";
 import {makeBackendRequest} from "@/utils/make-backend-request.ts";
