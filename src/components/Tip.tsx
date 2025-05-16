@@ -1,7 +1,7 @@
 function Tip({text}) {
     return (
         <div>
-            <p>💡Tip: {text}.</p>
+            <p className="">💡Tip: {text}.</p>
         </div>
     );
 }

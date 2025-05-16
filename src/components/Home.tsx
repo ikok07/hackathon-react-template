@@ -12,8 +12,8 @@ function Home() {
 
     return (
         <div>
-            <h1 className="text-xl font-semibold">Hi, {userObject.user?.firstName ?? "Guest"}!</h1>
-            <p>Today: {currDate} Visits this month: {visitsThisMonth}</p>
+            <h1 className="text-2xl font-semibold">Hi, {userObject.user?.firstName ?? "Guest"}!</h1>
+            <p className="text-gray-400">Today: {currDate} Visits this month: {visitsThisMonth}</p>
             <LoyaltyCard/>
             <Tip text={`Earn double points on all purchases! Visit the "My Card" section to learn more`}/>
             <RecentActivity/>
