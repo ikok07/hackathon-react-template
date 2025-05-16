@@ -42,10 +42,10 @@ export default function HomePage() {
 
     const isLoading = useMemo(() => isPending || isLoadingTest, [isPending, isLoadingTest]);
 
-    return <div>
-        <div className="flex items-center gap-3 my-5">
+    return <>
+        <div className="flex justify-center items-center gap-4">
             {userObject.isSignedIn ?
-                <UserButton showName={true} /> :
+                <UserButton showName={true}/> :
                 <>
                     <SignInButton>
                         <SecondaryButton>Влизане</SecondaryButton>
@@ -55,24 +55,25 @@ export default function HomePage() {
                     </SignUpButton>
                 </>
             }
-        </div>
 
-        <DropdownMenu>
-            <DropdownMenuTrigger>
-                <PrimaryButton className="">Dropdown Menu</PrimaryButton>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                <DropdownMenuGroup>
-                    <DropdownMenuItemRow
-                        type="button"
-                        Icon={IoExit}
-                        label="Добавяне на профил"
-                        onClick={() => mutate()}
-                        iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
-                        isLoading={false}
-                    />
-                </DropdownMenuGroup>
-            </DropdownMenuContent>
-        </DropdownMenu>
-    </div>
+
+            <DropdownMenu>
+                <DropdownMenuTrigger>
+                    <PrimaryButton className="">Dropdown Menu</PrimaryButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                    <DropdownMenuGroup>
+                        <DropdownMenuItemRow
+                            type="button"
+                            Icon={IoExit}
+                            label="Добавяне на профил"
+                            onClick={() => mutate()}
+                            iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
+                            isLoading={false}
+                        />
+                    </DropdownMenuGroup>
+                </DropdownMenuContent>
+            </DropdownMenu>
+        </div>
+    </>
 }
