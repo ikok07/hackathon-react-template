@@ -41,7 +41,7 @@ const items = [
 ]
 
 export function AppSidebar() {
-    const {activePage} = useAppState();
+    const {activePage, setActivePage} = useAppState();
 
     return (
         <Sidebar>
@@ -56,7 +56,8 @@ export function AppSidebar() {
                                     className={item.title === activePage ? "text-blue-500" : ""}
                                 >
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url}>
+                                        <a href={item.url}
+                                           onClick={() => setActivePage(item.title)} >
                                             <item.icon/>
                                             <span>{item.title}</span>
                                         </a>

@@ -16,7 +16,7 @@ type AppStateProps = {
 
 export default function AppStateProvider({children}: AppStateProps) {
 
-    const [activePage, setActivePage] = useState("home");
+    const [activePage, setActivePage] = useState("Home");
 
     return <AppStateContext.Provider value={{
         activePage,setActivePage
