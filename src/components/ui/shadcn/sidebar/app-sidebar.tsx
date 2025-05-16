@@ -1,4 +1,4 @@
-import {Calendar, Home, Inbox, Search, Settings} from "lucide-react"
+import {PercentIcon, Home, CreditCard, Search, Settings, Percent} from "lucide-react"
 import {useAppState} from "@/state/app.state.tsx";
 import {
     Sidebar,
@@ -10,6 +10,7 @@ import {
     SidebarMenuItem,
     SidebarHeader
 } from "@/components/ui/shadcn/sidebar/sidebar.tsx"
+import {NavLink} from 'react-router'
 
 // Menu items.
 const items = [
@@ -20,13 +21,13 @@ const items = [
     },
     {
         title: "Cards",
-        url: "#",
-        icon: Inbox,
+        url: "cards",
+        icon: CreditCard,
     },
     {
         title: "Discounts",
-        url: "#",
-        icon: Calendar,
+        url: "discounts",
+        icon: PercentIcon,
     },
     {
         title: "Search",
@@ -56,11 +57,11 @@ export function AppSidebar() {
                                     className={item.title === activePage ? "text-blue-500" : ""}
                                 >
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url}
+                                        <NavLink  to={item.url}
                                            onClick={() => setActivePage(item.title)} >
                                             <item.icon/>
                                             <span>{item.title}</span>
-                                        </a>
+                                        </NavLink>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
