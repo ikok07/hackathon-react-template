@@ -1,4 +1,4 @@
-import {PercentIcon, Home, CreditCard, Search, Settings, Percent, UserPen} from "lucide-react"
+import {PercentIcon, Home, CreditCard, Search, Settings, UserPen} from "lucide-react"
 import {useAppState} from "@/state/app.state.tsx";
 import {
     Sidebar,
@@ -41,16 +41,6 @@ const items = [
         title: "Discounts",
         url: "discounts",
         icon: PercentIcon,
-    },
-    {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
     },
 ]
 

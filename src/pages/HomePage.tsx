@@ -13,6 +13,7 @@ import {SignInButton, SignUpButton, useClerk, UserButton} from "@clerk/clerk-rea
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton.tsx";
 import {useAppUser} from "@/hooks/auth/useAppUser.ts";
 import {makeBackendRequest} from "@/utils/make-backend-request.ts";
+import Home from "@/components/Home.tsx";
 
 export default function HomePage() {
     const {userObject} = useAppUser();
@@ -45,7 +46,7 @@ export default function HomePage() {
     return <>
         <div className="flex justify-center items-center gap-4">
             {userObject.isSignedIn ?
-                <UserButton showName={true}/> :
+                <Home/>:
                 <>
                     <SignInButton>
                         <SecondaryButton>Влизане</SecondaryButton>
@@ -57,23 +58,23 @@ export default function HomePage() {
             }
 
 
-            <DropdownMenu>
-                <DropdownMenuTrigger>
-                    <PrimaryButton className="">Dropdown Menu</PrimaryButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                    <DropdownMenuGroup>
-                        <DropdownMenuItemRow
-                            type="button"
-                            Icon={IoExit}
-                            label="Добавяне на профил"
-                            onClick={() => mutate()}
-                            iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
-                            isLoading={false}
-                        />
-                    </DropdownMenuGroup>
-                </DropdownMenuContent>
-            </DropdownMenu>
+            {/*<DropdownMenu>*/}
+            {/*    <DropdownMenuTrigger>*/}
+            {/*        <PrimaryButton className="">Dropdown Menu</PrimaryButton>*/}
+            {/*    </DropdownMenuTrigger>*/}
+            {/*    <DropdownMenuContent>*/}
+            {/*        <DropdownMenuGroup>*/}
+            {/*            <DropdownMenuItemRow*/}
+            {/*                type="button"*/}
+            {/*                Icon={IoExit}*/}
+            {/*                label="Добавяне на профил"*/}
+            {/*                onClick={() => mutate()}*/}
+            {/*                iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"*/}
+            {/*                isLoading={false}*/}
+            {/*            />*/}
+            {/*        </DropdownMenuGroup>*/}
+            {/*    </DropdownMenuContent>*/}
+            {/*</DropdownMenu>*/}
         </div>
     </>
 }

@@ -9,8 +9,8 @@ import SignInPage from "@/pages/SignInPage.tsx";
 import SignUpPage from "@/pages/SignUpPage.tsx";
 import NotFoundPage from '@/pages/NotFoundPage.tsx'
 import SideBarPage from "@/pages/SideBarPage.tsx";
-import CardsPage from "@/pages/CardsPage.tsx"
 import DiscountsPage from "@/pages/DiscountsPage.tsx";
+import LoyaltyCardPage from "@/pages/LoyaltyCardPage.tsx";
 
 
 export default function IndexRoutes() {
@@ -20,7 +20,7 @@ export default function IndexRoutes() {
                 <Route path='/' element={<SideBarPage/>}>
 
                     <Route index element={<HomePage/>}/>
-                    <Route path="cards" element={<CardsPage/>}/>
+                    <Route path="cards" element={<LoyaltyCardPage/>}/>
                     <Route path="discounts" element={<DiscountsPage/>}/>
 
                     <Route path="/nested" element={<Navigate to="/nested/test"/>}/>
