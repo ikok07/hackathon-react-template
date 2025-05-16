@@ -5,10 +5,10 @@ import {
     SidebarContent,
     SidebarGroup,
     SidebarGroupContent,
-    SidebarGroupLabel,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarHeader
 } from "@/components/ui/shadcn/sidebar/sidebar.tsx"
 
 // Menu items.
@@ -19,12 +19,12 @@ const items = [
         icon: Home,
     },
     {
-        title: "Inbox",
+        title: "Cards",
         url: "#",
         icon: Inbox,
     },
     {
-        title: "Calendar",
+        title: "Discounts",
         url: "#",
         icon: Calendar,
     },
@@ -47,7 +47,7 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarHeader><img src="/logo.png" alt="logo" width={100} height={100}/></SidebarHeader>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (
