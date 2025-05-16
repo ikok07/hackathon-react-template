@@ -21,6 +21,9 @@ import PrimaryButton from "@/components/ui/buttons/PrimaryButton.tsx";
 import DropdownMenuItemRow from "@/components/ui/dropdown/DropdownMenuItemRow.tsx";
 import {IoExit} from "react-icons/io5";
 import {Button} from "@/components/ui/shadcn/button.tsx";
+import {useClerk, UserButton} from "@clerk/clerk-react";
+import {useAppUser} from "@/hooks/auth/useAppUser.ts";
+
 
 // Menu items.
 const items = [
@@ -53,6 +56,8 @@ const items = [
 
 export function AppSidebar() {
     const {activePage, setActivePage} = useAppState();
+    const clerk = useClerk();
+    const {userObject} = useAppUser();
 
     return (
         <Sidebar>
@@ -80,10 +85,10 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <DropdownMenu>
+                {userObject.isSignedIn ? <UserButton showName={true}/> : <DropdownMenu>
                     <DropdownMenuTrigger>
                         <SidebarMenuButton>
-                            <UserPen />
+                            <UserPen/>
                             <a href="#">
                                 <span>Profile</span>
                             </a>
@@ -103,7 +108,7 @@ export function AppSidebar() {
                                 type="button"
                                 Icon={IoExit}
                                 label="Влизане"
-                                onClick={() => mutate()}
+                                onClick={() => clerk.openSignIn({})}
                                 iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
                                 isLoading={false}
                             />
@@ -111,13 +116,13 @@ export function AppSidebar() {
                                 type="button"
                                 Icon={IoExit}
                                 label="Регистрация"
-                                onClick={() => mutate()}
+                                onClick={() => clerk.openSignUp({})}
                                 iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
                                 isLoading={false}
                             />
                         </DropdownMenuGroup>
                     </DropdownMenuContent>
-                </DropdownMenu>
+                </DropdownMenu>}
             </SidebarFooter>
         </Sidebar>
     )
