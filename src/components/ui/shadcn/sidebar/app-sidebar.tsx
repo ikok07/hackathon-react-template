@@ -1,4 +1,4 @@
-import {PercentIcon, Home, CreditCard, Search, Settings, Percent} from "lucide-react"
+import {PercentIcon, Home, CreditCard, Search, Settings, Percent, UserPen} from "lucide-react"
 import {useAppState} from "@/state/app.state.tsx";
 import {
     Sidebar,
@@ -8,9 +8,19 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarHeader
+    SidebarHeader, SidebarFooter
 } from "@/components/ui/shadcn/sidebar/sidebar.tsx"
 import {NavLink} from 'react-router'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuTrigger
+} from "@/components/ui/shadcn/dropdown-menu.tsx";
+import PrimaryButton from "@/components/ui/buttons/PrimaryButton.tsx";
+import DropdownMenuItemRow from "@/components/ui/dropdown/DropdownMenuItemRow.tsx";
+import {IoExit} from "react-icons/io5";
+import {Button} from "@/components/ui/shadcn/button.tsx";
 
 // Menu items.
 const items = [
@@ -49,7 +59,7 @@ export function AppSidebar() {
             <SidebarContent>
                 <SidebarGroup>
                     <SidebarHeader><img src="/logo.png" alt="logo" width={100} height={100}/></SidebarHeader>
-                    <SidebarGroupContent>
+                    <SidebarGroupContent className="mt-4">
                         <SidebarMenu>
                             {items.map((item) => (
                                 <SidebarMenuItem
@@ -57,8 +67,8 @@ export function AppSidebar() {
                                     className={item.title === activePage ? "text-blue-500" : ""}
                                 >
                                     <SidebarMenuButton asChild>
-                                        <NavLink  to={item.url}
-                                           onClick={() => setActivePage(item.title)} >
+                                        <NavLink to={item.url}
+                                                 onClick={() => setActivePage(item.title)}>
                                             <item.icon/>
                                             <span>{item.title}</span>
                                         </NavLink>
@@ -69,6 +79,46 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
+            <SidebarFooter>
+                <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <SidebarMenuButton>
+                            <UserPen />
+                            <a href="#">
+                                <span>Profile</span>
+                            </a>
+                        </SidebarMenuButton>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuGroup>
+                            <DropdownMenuItemRow
+                                type="button"
+                                Icon={IoExit}
+                                label="Добавяне на профил"
+                                onClick={() => mutate()}
+                                iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
+                                isLoading={false}
+                            />
+                            <DropdownMenuItemRow
+                                type="button"
+                                Icon={IoExit}
+                                label="Влизане"
+                                onClick={() => mutate()}
+                                iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
+                                isLoading={false}
+                            />
+                            <DropdownMenuItemRow
+                                type="button"
+                                Icon={IoExit}
+                                label="Регистрация"
+                                onClick={() => mutate()}
+                                iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"
+                                isLoading={false}
+                            />
+                        </DropdownMenuGroup>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+            </SidebarFooter>
         </Sidebar>
     )
 }
