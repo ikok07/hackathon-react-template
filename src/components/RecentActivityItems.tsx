@@ -1,28 +1,50 @@
-const recentActivityItems = [
+interface ActivityItem {
+    id: number;
+    text: string;
+    date: string;
+    price?: number;
+    points: number;
+    orderNumber?: string;
+}
+
+const recentActivityItems: ActivityItem[] = [
     {
-        id: 5678,
-        text: "Order #1212 Completed",
-        date: new Date(),
-        price: 45,
+        id: 1023,
+        text: "Order #1023 completed",
+        date: "May 15, 2025",
+        price: 45.00,
+        points: 50
     },
     {
-        id: 5674,
-        text: "Order #1232 Completed",
-        date: new Date(),
-        price: 30,
+        id: 2,
+        text: "Top-Up - Added 500 pts",
+        date: "May 10, 2025",
+        points: 500
     },
+    {
+        id: 1018,
+        text: "Order #1018 - Redeemed 100 pts",
+        date: "May 08, 2025",
+        orderNumber: "1018",
+        points: -100
+    }
 ];
 
-function RecentActivityItem({ items }: { items: typeof recentActivityItems }) {
+function RecentActivityItem({ item }: { item: ActivityItem }) {
+    const isPositive = item.points > 0;
+    const pointsText = isPositive ? `+${item.points}pts` : `${item.points}`;
+    const pointsClass = isPositive ? "text-green-500" : "text-red-500";
+    
     return (
-        <div>
-            {items.map((item) => (
-                <div key={item.id} className="border-2 p-4 border-gray-200 mt-4 rounded-md ">
-                    <p>{item.text}</p>
-                    <p>{item.date.toLocaleString()}</p>
-                    <p>${item.price}</p>
+        <div className="border border-gray-200 rounded-lg p-4 mb-4 shadow-sm">
+            <div className="flex justify-between items-start">
+                <div>
+                    <p className="font-medium">{item.text}</p>
+                    <p className="text-gray-500 text-sm mt-1">{item.date}{item.price ? ` • $${item.price.toFixed(2)}` : ''}</p>
+                    {item.orderNumber && <p className="text-gray-500 text-sm">Order #{item.orderNumber}</p>}
                 </div>
-            ))}
+                <span className={`font-medium ${pointsClass}`}>{pointsText}</span>
+            </div>
         </div>
     );
 }
@@ -30,7 +52,9 @@ function RecentActivityItem({ items }: { items: typeof recentActivityItems }) {
 export default function RecentActivityItems() {
     return (
         <div>
-            <RecentActivityItem items={recentActivityItems} />
+            {recentActivityItems.map(item => (
+                <RecentActivityItem key={item.id} item={item} />
+            ))}
         </div>
     );
 }

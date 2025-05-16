@@ -2,8 +2,8 @@ import RecentActivityItems from "@/components/RecentActivityItems.tsx";
 
 function RecentActivity() {
     return (
-        <div>
-            <h2 className="text-xl font-semibold">Recent activity</h2>
+        <div className="py-8">
+            <h2 className="text-2xl font-semibold mb-4">Recent Transactions</h2>
             <RecentActivityItems/>
         </div>
     );

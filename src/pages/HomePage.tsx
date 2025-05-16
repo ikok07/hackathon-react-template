@@ -35,7 +35,7 @@ export default function HomePage() {
     const isLoading = useMemo(() => isPending || isLoadingTest, [isPending, isLoadingTest]);
 
     return <>
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex gap-4 mx-40">
             {userObject.isSignedIn ?
                 <Home/>:
                 <>
