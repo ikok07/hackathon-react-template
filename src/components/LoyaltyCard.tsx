@@ -2,7 +2,9 @@ import {useAppUser} from "@/hooks/auth/useAppUser.ts";
 
 function LoyaltyCard() {
     const { userObject } = useAppUser();
-    const expDate = "May 26, 2025";
+    const oneYearLater = new Date();
+    oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
+    const expDate = oneYearLater.toLocaleDateString("en-US");
     const firstName = userObject.user?.firstName || "John";
     const lastName = userObject.user?.lastName || "Doe";
     const status = "Active";
