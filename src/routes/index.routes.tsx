@@ -11,12 +11,14 @@ import NotFoundPage from '@/pages/NotFoundPage.tsx'
 import SideBarPage from "@/pages/SideBarPage.tsx";
 import DiscountsPage from "@/pages/DiscountsPage.tsx";
 import LoyaltyCardPage from "@/pages/LoyaltyCardPage.tsx";
+import AdminDashBoardPage from "@/pages/AdminDashBoardPage.tsx";
 
 
 export default function IndexRoutes() {
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>}>
+                <Route path='admin' element={<AdminDashBoardPage/>}/>
                 <Route path='/' element={<SideBarPage/>}>
 
                     <Route index element={<HomePage/>}/>
