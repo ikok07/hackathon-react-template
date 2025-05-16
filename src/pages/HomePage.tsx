@@ -1,12 +1,3 @@
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuTrigger
-} from "@/components/ui/shadcn/dropdown-menu.tsx";
-import PrimaryButton from "@/components/ui/buttons/PrimaryButton.tsx";
-import DropdownMenuItemRow from "@/components/ui/dropdown/DropdownMenuItemRow.tsx";
-import {IoExit} from "react-icons/io5";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {useMemo} from "react";
 import {SignInButton, SignUpButton, useClerk, UserButton} from "@clerk/clerk-react";
@@ -58,23 +49,6 @@ export default function HomePage() {
             }
 
 
-            {/*<DropdownMenu>*/}
-            {/*    <DropdownMenuTrigger>*/}
-            {/*        <PrimaryButton className="">Dropdown Menu</PrimaryButton>*/}
-            {/*    </DropdownMenuTrigger>*/}
-            {/*    <DropdownMenuContent>*/}
-            {/*        <DropdownMenuGroup>*/}
-            {/*            <DropdownMenuItemRow*/}
-            {/*                type="button"*/}
-            {/*                Icon={IoExit}*/}
-            {/*                label="Добавяне на профил"*/}
-            {/*                onClick={() => mutate()}*/}
-            {/*                iconClassName="text-red-400 group-hover:text-red-500 dark:group-hover:text-red-500"*/}
-            {/*                isLoading={false}*/}
-            {/*            />*/}
-            {/*        </DropdownMenuGroup>*/}
-            {/*    </DropdownMenuContent>*/}
-            {/*</DropdownMenu>*/}
         </div>
     </>
 }

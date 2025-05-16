@@ -15,15 +15,15 @@ const recentActivityItems = [
 
 function RecentActivityItem({ items }: { items: typeof recentActivityItems }) {
     return (
-        <>
+        <div>
             {items.map((item) => (
-                <div key={item.id}>
+                <div key={item.id} className="border-2 p-4 border-gray-200 mt-4 rounded-md ">
                     <p>{item.text}</p>
                     <p>{item.date.toLocaleString()}</p>
                     <p>${item.price}</p>
                 </div>
             ))}
-        </>
+        </div>
     );
 }
 

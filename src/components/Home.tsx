@@ -1,16 +1,19 @@
 import Tip from "@/components/Tip.tsx";
 import RecentActivity from "@/components/RecentActivity.tsx";
 import LoyaltyCard from "@/components/LoyaltyCard.tsx";
+import {useAppUser} from "@/hooks/auth/useAppUser.ts";
 
 
 function Home() {
-const currDate = new Date().toLocaleDateString("en-US")
+    const currDate = new Date().toLocaleDateString("en-US")
+    const {userObject} = useAppUser();
+    const visitsThisMonth = 12;
 
 
     return (
         <div>
-            <h2>Hi, John Doe</h2>
-            <p>Today: {currDate} Visits this month: 12</p>
+            <h1 className="text-xl font-semibold">Hi, {userObject.user?.firstName ?? "Guest"}!</h1>
+            <p>Today: {currDate} Visits this month: {visitsThisMonth}</p>
             <LoyaltyCard/>
             <Tip text={`Earn double points on all purchases! Visit the "My Card" section to learn more`}/>
             <RecentActivity/>
