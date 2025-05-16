@@ -4,11 +4,11 @@ import LoyaltyCard from "@/components/LoyaltyCard.tsx";
 import {useAppUser} from "@/hooks/auth/useAppUser.ts";
 
 
-function Home() {
+export default function Home() {
     const currDate = new Date().toLocaleDateString("en-US")
-    const {userObject} = useAppUser();
+    const {userObject,dbUser} = useAppUser();
     const visitsThisMonth = 12;
-
+    console.log(dbUser);
 
     return (
         <div>
@@ -20,5 +20,3 @@ function Home() {
         </div>
     );
 }
-
-export default Home;

@@ -6,12 +6,12 @@ export function useAppUser() {
     const userObject = useUser();
     const authObject = useAuth();
 
-    const {data: dbUser, isLoading: isGettingDbUser} = useQuery({
-        queryFn: () => makeBackendRequest("http://backendurl.com"),
+    const {data: dbUser, isLoading: isGettingDbUser,error} = useQuery({
+        queryFn: () => makeBackendRequest({method: "get", url: `${import.meta.env.VITE_BACKEND_URL!}/api/v1/profiles/${userObject.user!.id}`}),
         queryKey: ["db-user"],
-        enabled: false
+        enabled: !!userObject.user
     });
-
+    console.log(error);
     return {
         userObject,
         authObject,
