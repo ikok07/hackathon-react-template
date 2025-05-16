@@ -42,30 +42,35 @@ const data: Payment[] = [
         amount: 316,
         status: "success",
         email: "ken99@example.com",
+        visit: 34
     },
     {
         id: "3u1reuv4",
         amount: 242,
         status: "success",
         email: "Abe45@example.com",
+        visit: 23
     },
     {
         id: "derv1ws0",
         amount: 837,
         status: "processing",
         email: "Monserrat44@example.com",
+        visit: 7
     },
     {
         id: "5kma53ae",
         amount: 874,
         status: "success",
         email: "Silas22@example.com",
+        visit: 31
     },
     {
         id: "bhqecj4p",
         amount: 721,
         status: "failed",
         email: "carmella@example.com",
+        visit: 4
     },
 ]
 
@@ -74,6 +79,7 @@ export type Payment = {
     amount: number
     status: "pending" | "processing" | "success" | "failed"
     email: string
+    visit: number
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -100,13 +106,6 @@ export const columns: ColumnDef<Payment>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: "status",
-        header: "Status",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("status")}</div>
-        ),
-    },
-    {
         accessorKey: "email",
         header: ({ column }) => {
             return (
@@ -122,8 +121,23 @@ export const columns: ColumnDef<Payment>[] = [
         cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
     },
     {
+        accessorKey: "visit",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Visit Frequency
+                    <ArrowUpDown />
+                </Button>
+            )
+        },
+        cell: ({ row }) => <div className="lowercase">{row.getValue("visit")}</div>,
+    },
+    {
         accessorKey: "amount",
-        header: () => <div className="text-right">Amount</div>,
+        header: () => <div className="text-right">LTV</div>,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("amount"))
 
