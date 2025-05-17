@@ -34,8 +34,8 @@ function LoyaltyCard() {
             {/* Card */}
             <div className="flex justify-center">
                 <div
-                    className="bg-[linear-gradient(90deg,_#000_3.37%,_#1D93E7_100%)] w-full max-w-sm rounded-lg shadow-lg p-6 text-white relative overflow-hidden">
-                    <div className="grid grid-cols-2 gap-16">
+                    className="bg-[linear-gradient(90deg,_#000_3.37%,_#1D93E7_100%)] w-full max-w-sm rounded-lg shadow-lg pb-6 px-6 text-white relative overflow-hidden">
+                    <div className="grid grid-cols-2 gap-16 py-8">
                         <img src="/logo-light.svg" alt="logo-light" width={100} height={100}/>
                         <h2 className="text-xl font-semibold">Loyalty Card</h2>
                     </div>
