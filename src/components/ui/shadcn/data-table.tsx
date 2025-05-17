@@ -36,6 +36,7 @@ import {
     TableRow,
 } from "@/components/ui/shadcn/table"
 import PrimaryButton from "@/components/ui/buttons/PrimaryButton.tsx";
+import {cn} from "@/utils/cn.ts";
 
 const data: Payment[] = [
     {
@@ -44,7 +45,8 @@ const data: Payment[] = [
         status: "success",
         email: "ken99@example.com",
         visit: 34,
-        name: "Daniel Todorov"
+        name: "Daniel Todorov",
+        interests: ["motorcycle", "cooking"]
     },
     {
         id: "3u1reuv4",
@@ -52,7 +54,8 @@ const data: Payment[] = [
         status: "success",
         email: "Abe45@example.com",
         visit: 23,
-        name:"Jane Doe"
+        name:"Jane Doe",
+        interests: ["motorcycle", "cooking"]
     },
     {
         id: "derv1ws0",
@@ -60,7 +63,8 @@ const data: Payment[] = [
         status: "processing",
         email: "Monserrat44@example.com",
         visit: 7,
-        name: "Foo Bar"
+        name: "Foo Bar",
+        interests: ["motorcycle", "cooking"]
     },
     {
         id: "5kma53ae",
@@ -68,7 +72,8 @@ const data: Payment[] = [
         status: "success",
         email: "Silas22@example.com",
         visit: 31,
-        name: "John Jones"
+        name: "John Jones",
+        interests: ["motorcycle", "cooking"]
     },
     {
         id: "bhqecj4p",
@@ -76,7 +81,8 @@ const data: Payment[] = [
         status: "failed",
         email: "carmella@example.com",
         visit: 4,
-        name: "John Doe"
+        name: "John Doe",
+        interests: ["motorcycle", "cooking"]
     },
 ]
 
@@ -87,6 +93,7 @@ export type Payment = {
     email: string
     visit: number
     name: string
+    interests: any
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -94,6 +101,7 @@ export const columns: ColumnDef<Payment>[] = [
         id: "select",
         header: ({ table }) => (
             <Checkbox
+                className={cn("flex items-center justify-center")}
                 checked={
                     table.getIsAllPageRowsSelected() ||
                     (table.getIsSomePageRowsSelected() && "indeterminate")
@@ -125,7 +133,7 @@ export const columns: ColumnDef<Payment>[] = [
                 </Button>
             )
         },
-        cell: ({ row }) => <div>{row.getValue("name")}</div>,
+        cell: ({ row }) => <div className="text-center">{row.getValue("name")}</div>,
     },
     {
         accessorKey: "email",
@@ -140,13 +148,15 @@ export const columns: ColumnDef<Payment>[] = [
                 </Button>
             )
         },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+        cell: ({ row }) => <div className="text-center">{row.getValue("email")}</div>,
     },
+    //visit frequency
     {
         accessorKey: "visit",
         header: ({ column }) => {
             return (
                 <Button
+                    className="text-center"
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
@@ -155,8 +165,26 @@ export const columns: ColumnDef<Payment>[] = [
                 </Button>
             )
         },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("visit")}</div>,
+        cell: ({ row }) =>
+            <div className="text-center">
+            {row.getValue("visit")}
+        </div>,
     },
+    // {
+    //     accessorKey: "interests",
+    //     header: ({ column }) => {
+    //         return (
+    //             <Button
+    //                 variant="ghost"
+    //                 onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    //             >
+    //                 User Interests
+    //                 <ArrowUpDown />
+    //             </Button>
+    //         )
+    //     },
+    //     cell: ({ row }) => <div>{row.format(("interests"))}</div>,
+    // },
     {
         accessorKey: "avgAmount",
         header: () => <div className="text-center">Average Amount Spent</div>,
