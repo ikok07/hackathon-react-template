@@ -13,6 +13,7 @@ import AdminDashBoardPage from "@/pages/AdminDashBoardPage.tsx";
 import PaymentSuccessfulPage from "@/pages/PaymentSuccessfulPage.tsx";
 
 export default function IndexRoutes() {
+
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>}>
