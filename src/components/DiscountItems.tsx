@@ -48,7 +48,7 @@ export default function DiscountItems({ searchTerm }: Props) {
         {items.map(d => (
             <div
                 key={d.id}
-                className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col"
+                className="bg-white border-2 border-gray-200 rounded-xl p-6 flex flex-col"
             >
               <img
                   src={d.image}
