@@ -43,35 +43,40 @@ const data: Payment[] = [
         amount: 316,
         status: "success",
         email: "ken99@example.com",
-        visit: 34
+        visit: 34,
+        name: "Daniel Todorov"
     },
     {
         id: "3u1reuv4",
         amount: 242,
         status: "success",
         email: "Abe45@example.com",
-        visit: 23
+        visit: 23,
+        name:"Jane Doe"
     },
     {
         id: "derv1ws0",
         amount: 837,
         status: "processing",
         email: "Monserrat44@example.com",
-        visit: 7
+        visit: 7,
+        name: "Foo Bar"
     },
     {
         id: "5kma53ae",
         amount: 874,
         status: "success",
         email: "Silas22@example.com",
-        visit: 31
+        visit: 31,
+        name: "John Jones"
     },
     {
         id: "bhqecj4p",
         amount: 721,
         status: "failed",
         email: "carmella@example.com",
-        visit: 4
+        visit: 4,
+        name: "John Doe"
     },
 ]
 
@@ -81,6 +86,7 @@ export type Payment = {
     status: "pending" | "processing" | "success" | "failed"
     email: string
     visit: number
+    name: string
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -105,6 +111,21 @@ export const columns: ColumnDef<Payment>[] = [
         ),
         enableSorting: false,
         enableHiding: false,
+    },
+    {
+        accessorKey: "name",
+        header: ({ column }) => {
+            return (
+                <Button
+                    variant="ghost"
+                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                >
+                    Name
+                    <ArrowUpDown />
+                </Button>
+            )
+        },
+        cell: ({ row }) => <div>{row.getValue("name")}</div>,
     },
     {
         accessorKey: "email",
@@ -135,6 +156,23 @@ export const columns: ColumnDef<Payment>[] = [
             )
         },
         cell: ({ row }) => <div className="lowercase">{row.getValue("visit")}</div>,
+    },
+    {
+        accessorKey: "avgAmount",
+        header: () => <div className="text-center">Average Amount Spent</div>,
+        cell: ({ row }) => {
+            const amount = row.original.amount
+            const visit = row.original.visit
+
+            const avg = visit !== 0 ? amount / visit : 0
+
+            const formatted = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+            }).format(avg)
+
+            return <div className="text-center font-medium">{formatted}</div>
+        },
     },
     {
         accessorKey: "amount",

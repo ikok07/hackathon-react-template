@@ -6,7 +6,7 @@ export function useAppUser() {
     const userObject = useUser();
     const authObject = useAuth();
 
-    const {data: dbUser, isLoading: isGettingDbUser,error} = useQuery({
+    const {data: dbUser, isLoading: isGettingDbUser, error} = useQuery({
         queryFn: () => makeBackendRequest({method: "get", url: `${import.meta.env.VITE_BACKEND_URL!}/api/v1/profiles/${userObject.user!.id}`, opts: {
                 headers: {
                     Authorization: import.meta.env.VITE_BACKEND_API_KEY!
@@ -20,6 +20,6 @@ export function useAppUser() {
         userObject,
         authObject,
         dbUser,
-        isLoading: isGettingDbUser
+        isLoading: !userObject.isLoaded || isGettingDbUser
     }
 }

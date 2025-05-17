@@ -32,7 +32,7 @@ const recentActivityItems: ActivityItem[] = [
 
 function RecentActivityItem({ item }: { item: ActivityItem }) {
     const isPositive = item.points > 0;
-    const pointsText = isPositive ? `+${item.points}pts` : `${item.points}`;
+    const pointsText = isPositive ? `+${item.points}pts` : `${item.points}pts`;
     const pointsClass = isPositive ? "text-green-500" : "text-red-500";
     
     return (
