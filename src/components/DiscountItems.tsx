@@ -58,13 +58,13 @@ export default function DiscountItems({ searchTerm }: Props) {
               <h3 className="text-lg font-medium mb-1">{d.title}</h3>
               <p className="text-gray-500 text-sm mb-4">{d.subtitle}</p>
               <div className="mt-auto">
-            <span className="text-3xl font-bold text-blue-600">
+            <span className="text-3xl font-bold text-[#0059b9]">
               {d.percent}%
             </span>
                 <p className="text-gray-400 text-xs mb-4">
                   until {d.expires}
                 </p>
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                <button className="w-full bg-accent text-white py-2 rounded-lg hover:bg-blue-700 transition">
                   Use Now
                 </button>
               </div>

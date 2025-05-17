@@ -36,7 +36,7 @@ function RecentActivityItem({ item }: { item: ActivityItem }) {
     const pointsClass = isPositive ? "text-green-500" : "text-red-500";
     
     return (
-        <div className="border border-gray-200 rounded-lg p-4 mb-4 shadow-sm">
+        <div className="border border-gray-200 rounded-lg p-4 mb-4 shadow-sm mr-4">
             <div className="flex justify-between items-start">
                 <div>
                     <p className="font-medium">{item.text}</p>
