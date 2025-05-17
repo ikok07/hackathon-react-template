@@ -7,7 +7,11 @@ export function useAppUser() {
     const authObject = useAuth();
 
     const {data: dbUser, isLoading: isGettingDbUser,error} = useQuery({
-        queryFn: () => makeBackendRequest({method: "get", url: `${import.meta.env.VITE_BACKEND_URL!}/api/v1/profiles/${userObject.user!.id}`}),
+        queryFn: () => makeBackendRequest({method: "get", url: `${import.meta.env.VITE_BACKEND_URL!}/api/v1/profiles/${userObject.user!.id}`, opts: {
+                headers: {
+                    Authorization: import.meta.env.VITE_BACKEND_API_KEY!
+                }
+            }}),
         queryKey: ["db-user"],
         enabled: !!userObject.user
     });
