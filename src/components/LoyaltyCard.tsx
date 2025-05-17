@@ -46,7 +46,7 @@ function LoyaltyCard() {
                         </div>
                         <div className="text-right">
                             <p className="text-xs">Valid Thru</p>
-                            <p>{formattedDate}</p>
+                            <p>{formattedDate ?? ""}</p>
                         </div>
                     </div>
                 </div>
