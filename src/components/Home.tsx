@@ -33,7 +33,7 @@ export default function Home() {
                 <UserCredits/>
             </div>
             <p className="text-gray-400 mb-4">Today: {currDate} Visits this month: {customerVisitsCount}</p>
-            <div className="border-t-2 border-b-2 border-gray-200 py-4"><LoyaltyCard/></div>
+            <div className="border-t-2 border-b-2 border-gray-200 py-4 mb-4"><LoyaltyCard/></div>
             <Tip text={`Earn double points on all purchases! Visit the "My Card" section to learn more`}/>
             <RecentActivity/>
             <Outlet/>
