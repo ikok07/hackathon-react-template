@@ -27,9 +27,11 @@ export default function Home() {
 
     return (
         <div className="container lg:mx-46 md:mx:hidden px-4 sm:px-6 md:px-8 py-6">
-            <h1 className="text-2xl font-semibold mb-1">Hi, {userObject.user?.firstName ?? "Guest"}!</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-2xl font-semibold mb-1">Hi, {userObject.user?.firstName ?? "Guest"}!</h1>
+                <UserCredits/>
+            </div>
             <p className="text-gray-400 mb-4">Today: {currDate} Visits this month: {customerVisitsCount}</p>
-            <UserCredits/>
             <div className="border-t-2 border-b-2 border-gray-200 py-4"><LoyaltyCard/></div>
             <Tip text={`Earn double points on all purchases! Visit the "My Card" section to learn more`}/>
             <RecentActivity/>
