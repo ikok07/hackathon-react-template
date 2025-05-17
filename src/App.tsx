@@ -3,6 +3,7 @@ import AppStateProvider from "@/state/app.state.tsx";
 import {Outlet} from "react-router";
 import {ClerkProvider} from "@clerk/clerk-react";
 import {bgBG} from "@clerk/localizations";
+import {ToastContainer} from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
           <AppStateProvider>
               <Outlet />
+              <ToastContainer />
           </AppStateProvider>
       </QueryClientProvider>
   </ClerkProvider>
