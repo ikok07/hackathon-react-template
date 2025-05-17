@@ -14,9 +14,8 @@ function LoyaltyCard() {
             {/* Card */}
             <div className="flex justify-center">
                 <div className="bg-[linear-gradient(90deg,_#000_3.37%,_#1D93E7_100%)] w-full max-w-sm rounded-lg shadow-lg p-6 text-white relative overflow-hidden">
-                    <div className="absolute top-4 left-4 bg-gray-300/20 w-10 h-8 rounded"></div>
-                    <h2 className="text-xl font-semibold mt-8 mb-6">Loyalty Card</h2>
-                    
+                    <div><img src="/logo-light.svg" alt="logo-light" width={100} height={100}/></div>
+                    <h2 className="text-xl font-semibold mt-3 mb-6">Loyalty Card</h2>
                     <div className="my-8">
                         <p className="text-xl tracking-wider">**** **** **** 1234</p>
                     </div>
