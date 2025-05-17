@@ -10,9 +10,14 @@ import {
     DialogTrigger,
 } from "@/components/ui//shadcn/dialog"
 import PrimaryButton from "@/components/ui/buttons/PrimaryButton.tsx";
+import PrimaryInput from "@/components/ui/inputs/PrimaryInput.tsx";
+import {useState} from "react";
+import {handleParse, trackErrors} from "@/utils/handleInputValidation.ts";
+import {z} from "zod";
 
 export default function UserCredits() {
-    // const userCredits= 25;
+    const [inputCredits, setInputCredits] = useState<string | null>(null);
+    const [errors, setErrors] = useState<string[]>([]);
     const {userObject, dbUser} = useAppUser();
     const {data: credits, isLoading, error} = useQuery({
         queryFn: async () => {
@@ -35,15 +40,34 @@ export default function UserCredits() {
                         <p>{credits?.amount_credits ?? 0}</p> <img src="/credits.svg" alt='credits' width={20} height={20}/>
                     </button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="text-left">
                     <DialogHeader>
                         <DialogTitle>Add POS Coins</DialogTitle>
                         <DialogDescription>
-                            <PrimaryButton>+</PrimaryButton>
-                            <span>0</span>
-                            <PrimaryButton>-</PrimaryButton>
+                            Buy Credits in order to save money later
                         </DialogDescription>
                     </DialogHeader>
+                    <PrimaryInput
+                        label="Amount"
+                        placeholder="100"
+                        value={inputCredits ?? ""}
+                        onChange={(e) => setInputCredits(e.target.value)}
+                        error={
+                            handleParse({
+                                type: "ignoreNull",
+                                value: inputCredits ? +inputCredits : null,
+                                validateCb: () => z.number({message: "Invalid number!"}).min(0, {message: "Minimal value: 0"}).max(10000, {message: "Max value: 10000"}).parse(inputCredits ? +inputCredits : null),
+                                trackErrorsFunc: (id, action) => trackErrors(id, action, errors, setErrors),
+                                errorId: "credits"
+                            })
+                        }
+                    />
+                    <PrimaryButton
+                        onClick={() => {}}
+                        disabled={errors.length > 0}
+                    >
+                        Pay
+                    </PrimaryButton>
                 </DialogContent>
             </Dialog>
         </>
