@@ -53,7 +53,7 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarHeader><img src="/logo.png" alt="logo" width={100} height={100}/></SidebarHeader>
+                    <SidebarHeader><img src="/logo.png" alt="logo" width={150} height={150}/></SidebarHeader>
                     <SidebarGroupContent className="mt-4">
                         <SidebarMenu>
                             {items.map((item) => (
