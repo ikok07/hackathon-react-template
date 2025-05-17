@@ -14,15 +14,16 @@ export default function Home() {
 
     const {data: customerVisitsCount, isLoading, error} = useQuery({
         queryFn: async () => {
-            const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/customer-visits/${userObject.user?.id}`, {
+            const {data} = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/customer-visits/${userObject.user!.id}`, {
                 headers: {
                     Authorization: import.meta.env.VITE_BACKEND_API_KEY!
                 }
             });
-            console.log(data.data)
+
             return data.data.length;
         },
-        queryKey: [`customer-visits-${userObject.user?.id ?? "no-user"}`]
+        queryKey: [`customer-visits-${userObject.user?.id ?? "no-user"}`],
+        enabled: !!userObject.user
     });
 
     return (

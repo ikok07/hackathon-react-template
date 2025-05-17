@@ -15,7 +15,7 @@ export function useAppUser() {
         queryKey: ["db-user"],
         enabled: !!userObject.user
     });
-    console.log(error);
+
     return {
         userObject,
         authObject,

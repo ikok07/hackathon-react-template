@@ -41,7 +41,7 @@ function RecentActivityItem({ item }: { item: ActivityItem }) {
                 <div>
                     <p className="font-medium">{item.text}</p>
                     <p className="text-gray-500 text-sm mt-1">{item.date}{item.price ? ` • $${item.price.toFixed(2)}` : ''}</p>
-                    {item.orderNumber && <p className="text-gray-500 text-sm">Order #{item.orderNumber}</p>}
+                    {item.orderNumber && <p className="text-gray-500 text-sm"></p>}
                 </div>
                 <span className={`font-medium ${pointsClass}`}>{pointsText}</span>
             </div>
