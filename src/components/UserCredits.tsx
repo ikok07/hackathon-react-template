@@ -21,7 +21,7 @@ export default function UserCredits() {
     return (
         <div>
             <button className="flex gap-1">
-                <p>{credits.amount_credits}</p> <img src="/credits.svg" alt='credits' width={20} height={20} />
+                <p>{credits?.amount_credits ?? 0}</p> <img src="/credits.svg" alt='credits' width={20} height={20} />
             </button>
         </div>
     );
