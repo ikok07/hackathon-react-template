@@ -32,11 +32,11 @@ const items = [
         url: "/",
         icon: Home,
     },
-    {
-        title: "Cards",
-        url: "cards",
-        icon: CreditCard,
-    },
+    // {
+    //     title: "Cards",
+    //     url: "cards",
+    //     icon: CreditCard,
+    // },
     {
         title: "Discounts",
         url: "discounts",
